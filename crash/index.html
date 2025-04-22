@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Crash It - Samolot w ruchu</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #000814;
+      color: #00ff00;
+      overflow: hidden;
+    }
+
+    #game {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #001d1d 10%, #000814 80%);
+      overflow: hidden;
+    }
+
+    #multiplier {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      font-weight: bold;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+      z-index: 10;
+    }
+
+    #cash {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #00ff88;
+      text-shadow: 0 0 5px #00ff88;
+      z-index: 10;
+    }
+
+    #plane {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: url('https://img.icons8.com/ios-filled/100/00ffcc/airplane-take-off.png') no-repeat center;
+      background-size: contain;
+      top: 80%;
+      left: 0%;
+      transform: rotate(-10deg);
+      z-index: 5;
+      filter: drop-shadow(0 0 10px #00ffee);
+    }
+
+    #trail {
+      position: absolute;
+      width: 2px;
+      height: 100vh;
+      background: linear-gradient(to top, #00ffccaa, transparent);
+      left: 0;
+      top: 80%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .crash {
+      transform: rotate(120deg);
+      filter: drop-shadow(0 0 10px red);
+    }
+
+    #controls {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    button {
+      background: #00ff88;
+      color: black;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    button:hover {
+      background: #00cc66;
+    }
+
+    #clouds {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+      opacity: 0.05;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="game">
+  <div id="clouds"></div>
+
+  <div id="multiplier">X1.00</div>
+  <div id="cash">0.00 zł</div>
+  <div id="trail"></div>
+  <div id="plane"></div>
+
+<!-- DODANO: nowy element do wyświetlania stanu konta -->
+<div id="balance">Saldo: 10.00 zł</div>
+
+<!-- ZMIENIONY kontener controls - dodano pole do wpisywania stawki -->
+<div id="controls">
+  <input type="number" id="bet" min="0.1" step="0.1" value="0.50"> zł
+  <button id="start">Start</button>
+  <button id="cashout" style="display: none;">Wypłać</button>
+</div>
+<script>
+    let multiplier = 1.00;
+    let interval;
+    let crashed = false;
+    let cashedOut = false;
+    let baseBet = 0.50;
+    let balance = 10.00; // Stan początkowy
+  
+    const plane = document.getElementById('plane');
+    const trail = document.getElementById('trail');
+  
+    const multiplierDisplay = document.getElementById('multiplier');
+    const cashDisplay = document.getElementById('cash');
+    const startBtn = document.getElementById('start');
+    const cashoutBtn = document.getElementById('cashout');
+    const balanceDisplay = document.getElementById('balance');
+    const betInput = document.getElementById('bet');
+  
+    let posX = 0;
+    let posY = 80;
+  
+    function updateBalanceDisplay() {
+      balanceDisplay.textContent = `Saldo: ${balance.toFixed(2)} zł`;
+    }
+  
+    function resetGame() {
+      baseBet = parseFloat(betInput.value) || 0.5;
+      if (baseBet > balance) {
+        alert('Nie masz wystarczających środków!');
+        return;
+      }
+  
+      multiplier = 1.00;
+      crashed = false;
+      cashedOut = false;
+      posX = 0;
+      posY = 80;
+  
+      plane.classList.remove('crash');
+      plane.style.left = `${posX}%`;
+      plane.style.top = `${posY}%`;
+      trail.style.left = `${posX + 1}%`;
+      trail.style.top = `${posY}%`;
+  
+      multiplierDisplay.textContent = 'X1.00';
+      cashDisplay.textContent = `${(baseBet * multiplier).toFixed(2)} zł`;
+      cashoutBtn.style.display = 'inline-block';
+      startBtn.disabled = true;
+  
+      balance -= baseBet; // Odejmujemy zakład
+      updateBalanceDisplay();
+  
+      const crashPoint = (Math.random() * 4 + 1.5).toFixed(2);
+  
+      interval = setInterval(() => {
+        if (crashed) return;
+  
+        multiplier = (multiplier * 1.02).toFixed(2);
+        multiplierDisplay.textContent = 'X' + multiplier;
+        cashDisplay.textContent = `${(baseBet * multiplier).toFixed(2)} zł`;
+  
+        posX += 0.5;
+        posY -= 0.3;
+  
+        plane.style.left = `${posX}%`;
+        plane.style.top = `${posY}%`;
+  
+        trail.style.left = `${posX + 1}%`;
+        trail.style.top = `${posY}%`;
+  
+        if (multiplier >= crashPoint || posX >= 100 || posY <= 5) {
+          crashed = true;
+          clearInterval(interval);
+          if (!cashedOut) {
+            crashPlane();
+            cashoutBtn.style.display = 'none';
+            startBtn.disabled = false;
+          }
+        }
+      }, 100);
+    }
+  
+    function crashPlane() {
+      plane.classList.add('crash');
+      multiplierDisplay.textContent += ' 💥';
+      cashDisplay.textContent = '0.00 zł';
+      // brak zwrotu, już zabrano zakład
+    }
+  
+    startBtn.addEventListener('click', () => {
+      resetGame();
+    });
+  
+    cashoutBtn.addEventListener('click', () => {
+      if (!crashed) {
+        cashedOut = true;
+        clearInterval(interval);
+        cashoutBtn.style.display = 'none';
+        startBtn.disabled = false;
+        multiplierDisplay.textContent += ' ✅';
+        balance += parseFloat((baseBet * multiplier).toFixed(2)); // zwrot zysków
+        updateBalanceDisplay();
+      }
+    });
+  </script>
+  </div>
+</body>
+</html>

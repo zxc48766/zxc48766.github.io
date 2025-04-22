@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fly City</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="/crash/index.html">
+                <img src="https://i.imgur.com/6qMw2sO.png" alt="Logo FlyCity" width="100" height="100">
+            </a>
+        </div>
+        <nav>
+            <button class="button" onclick="window.location.href='/index.html';">
+                <span class="button-content">STRONA GŁÓWNA </span>
+              </button>
+<button class="button">
+    <span class="button-content">TEBEX </span>
+  </button>
+<button class="button" onclick="window.location.href='/tworcy.html';">
+    <span class="button-content">TWÓRCY </span>  
+  </button>
+<button class="button"  onclick="window.location.href='/status.html'">
+    <span class="button-content">STASTUS SERWERA </span>
+  </button>
+    
+  
+        </nav>
+    </header>
+    <section class="main">
+        <div class="content">
+            <div class="logo-section">
+                <img src="https://i.imgur.com/feSgARQ.png" alt="FLY City" class="main-logo">
+                <style>
+                    #button2 {
+                        --green: #1BFD9C;
+                        font-size: 15px;
+                        padding: 0.7em 2.7em;
+                        letter-spacing: 0.06em;
+                        position: relative;
+                        font-family: inherit;
+                        border-radius: 0.6em;
+                        overflow: hidden;
+                        transition: all 0.3s;
+                        line-height: 1.4em;
+                        border: 2px solid var(--green);
+                        background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+                        color: var(--green);
+                        box-shadow: inset 0 0 10px #1bfd9c66, 0 0 9px 3px rgba(27, 253, 156, 0.1);
+                        cursor: pointer;
+                    }
+            
+                    #button2:hover {
+                        color: #82ffc9;
+                        box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
+                    }
+            
+                    #button2:before {
+                        content: "";
+                        position: absolute;
+                        left: -4em;
+                        width: 4em;
+                        height: 100%;
+                        top: 0;
+                        transition: transform .4s ease-in-out;
+                        background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%, rgba(27, 253, 156, 0.1) 60%, transparent 100%);
+                    }
+            
+                    #button2:hover:before {
+                        transform: translateX(15em);
+                    }
+                </style>
+            </head>
+            <body>
+                <button id="button2" onclick="window.location.href='https://discord.gg/dxbjQpZ7Tz';">DISCORD</button>
+            </body>
+            </html>
+            
+            </div>
+            <div class="avatar">
+                <img src="https://i.imgur.com/UP8LDD3.pngvv" alt="Twórca" class="avatar-img">
+            </div>
+        </div>
+    </section>
+    <section class="instructions">
+        <div class="container">
+            <p style="margin-left: -1300px; margin-top: 600px;"><b>JAK DOŁĄCZYC NA SERWER</b> <br> </p> 
+            <p style="margin-left: -1400px; margin-top: 5px;">1. WŁĄCZ FIVEM</p>
+            <p style="margin-left: -1430px; margin-top: 5px;">2. KLIKNIJ F8</p>
+            <p style="margin-left: -1265px; margin-top: 5px;">3. WPISZ CONNECT FLYCITYRP.PL</p>
+            <p style="margin-left: -1440px; margin-top: 5px;">4. GOTOWE</p>
+        </div>
+        </script>
+        </ol>
+        <div class="container">
+            <img src="https://i.imgur.com/KdtlwdU.png" class="baza-zdjec" id="update">
+            <div class="image-miniatures" id="miniatures">
+                <img src="https://i.imgur.com/8DPGxsb.png">
+                <img src="https://imgur.com/a/zyT028f.png">
+                <img src="https://imgur.com/a/jB9Z5Ks">
+                <img src="https://imgur.com/a/RzLN1yQ">
+            </div>
+        </div>
+</body>
+<script>
+    const update = document.getElementById("update");
+    const miniatures = document.getElementById("miniatures");
+    const images = miniatures.getElementsByTagName("img");
+
+    for (let i = 0; i < images.length; i++) {
+        images[i].addEventListener("click", function() { 
+            update.classList.remove("fade");
+            setTimeout(() => {
+                update.classList.add("fade"); 
+                update.src = this.src; 
+            }, 100);
+        });
+    }
+</script>
+
+<footer class="fly-footer">
+    <div class="footer-content">
+        <h1>Fly City | New Chapter</h1>
+        <div class="footer-links">
+            <a href="/index.html">Strona Główna</a>
+            <a href="#">Tebex</a>
+            <a href="/tworcy.html">Twórcy Serwera</a>
+            <a href="/status.html">Status Serwera</a>
+        </div>
+    </div>
+    <div class="footer-line"></div>
+    <p>&copy; Designed by Slade & ZxQ</p>
+</footer>
+
+</html>

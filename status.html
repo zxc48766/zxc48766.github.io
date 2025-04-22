@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Status Serwera FiveM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0D0C0C;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+body {
+    background-color: #0D0C0C;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #0D0C0C;
+}
+
+.logo {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+ 
+.button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: #3d3a4e;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .button-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgba(150, 93, 233, 1) 10.8%,
+      rgba(99, 88, 238, 1) 94.3%
+    );
+    transition: all 0.475s;
+  }
+  .button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: #3d3a4e;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .button-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgba(150, 93, 233, 1) 10.8%,
+      rgba(99, 88, 238, 1) 94.3%
+    );
+    transition: all 0.475s;
+  }
+
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00bfff;
+    }
+
+    .status-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .status-box {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00bfff(0,255,255,0.3);
+      text-align: center;
+      flex: 1;
+    }
+
+    .status-box span {
+      font-size: 40px;
+      color: lime;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #111;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+
+    th {
+      background-color: #00bfff;
+      color: #000;
+    }
+
+
+    .fly-footer {
+  background-color: #0D0C0C;
+  color: white;
+  text-align: center;
+  padding: 30px 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.fly-footer h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #62696b;
+  letter-spacing: 2px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #00bfff;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #00bfff;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+.footer-line {
+  width: 80%;
+  height: 1px;
+  margin: 0 auto 15px auto;
+  background: linear-gradient(to right, #00bfff, transparent);
+  opacity: 0.2;
+}
+
+.fly-footer p {
+  font-size: 14px;
+  color: #888;
+}
+  </style>
+</head>
+<header>
+  <div class="logo-container plane-with-trail">
+    <a href="/index.html">
+        <img src="https://i.imgur.com/6qMw2sO.png" alt="Logo FlyCity" width="100" height="100">
+    </a>
+  </div>  
+    <nav>
+        <button class="button" onclick="window.location.href='/index.html';">
+            <span class="button-content">STRONA GŁÓWNA </span>
+          </button>
+<button class="button">
+<span class="button-content">TEBEX </span>
+</button>
+<button class="button" onclick="window.location.href='/tworcy.html';">
+<span class="button-content">TWÓRCY </span>  
+</button>
+<button class="button"  onclick="window.location.href='/status.html'">
+<span class="button-content">STASTUS SERWERA </span>
+</button>
+    </nav>
+</header>
+  <div class="container">
+    <h1>Status Serwera FiveM</h1>
+
+    <div class="status-boxes">
+      <div class="status-box">
+        <div>Hosting</div>
+        <span>✅</span>
+      </div>
+      <div class="status-box">
+        <div>Discord</div>
+        <span>✅</span>
+      </div>
+    </div>
+
+    <table id="statusTable">
+      <thead>
+        <tr>
+          <th>Usługa</th>
+          <th>Status</th>
+          <th>Ostatnia aktualizacja</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="fly-footer">
+    <div class="footer-content">
+        <h1>Fly City | New Chapter</h1>
+        <div class="footer-links">
+            <a href="/index.html">Strona Główna</a>
+            <a href="#">Tebex</a>
+            <a href="/tworcy.html">Twórcy Serwera</a>
+            <a href="/status.html">Status Serwera</a>
+        </div>
+    </div>
+    <div class="footer-line"></div>
+    <p>&copy; Designed by Slade & ZxQ</p>
+</footer>
+
+  <script>
+    async function fetchStatus() {
+      try {
+        const response = await fetch("https://status.cfx.re/api/v2/components.json");
+        const data = await response.json();
+        const tbody = document.querySelector("#statusTable tbody");
+        tbody.innerHTML = "";
+
+        data.components.forEach(comp => {
+          const row = document.createElement("tr");
+
+          const nameCell = document.createElement("td");
+          nameCell.textContent = comp.name;
+
+          const statusCell = document.createElement("td");
+          statusCell.textContent = comp.status === "operational" ? "Działa ✅" : comp.status;
+          statusCell.style.color = comp.status === "operational" ? "lime" : "orange";
+
+          const updatedCell = document.createElement("td");
+          updatedCell.textContent = new Date(comp.updated_at).toLocaleString("pl-PL");
+
+          row.appendChild(nameCell);
+          row.appendChild(statusCell);
+          row.appendChild(updatedCell);
+
+          tbody.appendChild(row);
+        });
+      } catch (err) {
+        console.error("Błąd podczas pobierania statusu:", err);
+      }
+    }
+
+    fetchStatus();
+  </script>
+</body>
+</html>
